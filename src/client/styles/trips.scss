@@ -1,0 +1,115 @@
+@use "base";
+@use "elements";
+
+.trips {
+  display: flex;
+  flex-direction: column;
+  background-color: #393E46;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px;
+  border-radius: 8px; // Rounded corners for the main container
+  width: 100%;
+  padding: 20px; // Padding around the trips section
+
+  .heading2 {
+    color: base.$paleta-1;
+    padding-bottom: 12px;
+    text-align: center; // Center the heading
+    font-size: 24px; // Increase font size for better visibility
+  }
+}
+
+.trip-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #ffffff; 
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 24px; 
+  margin: 15px 0; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  overflow: hidden; 
+
+  &:hover {
+    transform: translateY(-5px); 
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 30px; 
+  }
+
+  // Destination Image Styling
+  img.js-destination-image {
+    height: 220px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 15px; // Spacing below the image
+  }
+
+  .trip-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    // Destination Heading
+    h2 {
+      font-size: 24px; // Larger font for better readability
+      font-weight: 700;
+      color: #333; // Dark text for contrast
+      margin: 0;
+    }
+
+    span {
+      color: #00ADB5; // Accent color for the location and country
+    }
+
+    // Departure and Countdown Details
+    p {
+      font-size: 16px;
+      color: #555; // Softer gray for secondary details
+      margin: 0;
+    }
+
+    // Weather Icon & Description
+    img {
+      width: 50px;
+      height: 50px;
+      align-self: flex-start;
+    }
+
+    .js-weather-display {
+      font-size: 16px;
+      color: #666; // Softer text for the weather information
+    }
+
+    // Remove Button
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00ADB5;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #007a7e; // Darken the button color on hover
+      }
+    }
+  }
+
+  // Adjustments for wider screens
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+
+    .trip-details {
+      flex: 1;
+      padding-left: 20px;
+
+      h2 {
+        font-size: 22px; // Reduce font size slightly on wider screens
+        text-align: left; // Ensure the text aligns to the left on wider screens
+      }
+    }
+  }
+}

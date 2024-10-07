@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
+
+$paleta-1: hsla(43, 100, 50, 1);
+$paleta-2: hsla(230, 17, 42, 1);
+$paleta-3: hsla(40, 39, 91, 1);
+$paleta-4: hsla(210, 36, 80, 1);
+$paleta-5: hsla(165, 17, 30, 1);
+
+$layout-breakpoint-small: 600px;
+
+body {
+  color: $paleta-5;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+}
+
+.container--main {
+  margin-top: 60px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 2fr; 
+  gap: 20px; 
+  padding: 60px 15px 50px 15px;
+  justify-items: center;
+  align-items: start; 
+}
+
+// helper classes
+
+.hidden {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

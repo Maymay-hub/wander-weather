@@ -1,0 +1,44 @@
+@use "base";
+
+.button {
+  border: none;
+  font-size: 1em;
+  color: base.$paleta-3;
+  padding: 1em 3em;
+  border-radius: 5px;
+  background-color: base.$paleta-2;
+  border: 1px solid base.$paleta-5;
+
+  &:hover,
+  &:focus {
+    background-color: base.$paleta-2;
+    color: base.$paleta-1;
+    border: 1px solid base.$paleta-1;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+}
+
+.button--secondary {
+  background-color: base.$paleta-3;
+  color: base.$paleta-5;
+  padding: 0.5em 1em;
+  min-width: 120px;
+}
+
+.heading--main {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.link {
+  color: base.$paleta-1;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,48 @@
+$primary-color: #00adb5;
+$text-color: #222222;
+$nav-height: 70px;
+$padding: 4em;
+$font-stack: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: $nav-height;
+  padding: $padding;
+  @include flex-center;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 2rem;
+    color: $primary-color;
+    font-family: $font-stack;
+  }
+
+  img {
+    width: 60px;
+    height: auto;
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    text-align: center;
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    img {
+      width: 50px;
+    }
+  }
+}

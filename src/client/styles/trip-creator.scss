@@ -1,0 +1,78 @@
+@use "base";
+@use "elements";
+
+.trip-creator {
+  padding: 40px 20px;
+  margin: 30px 0;
+  background-color: #393E46;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%; 
+  max-width: 400px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .heading--main {
+    font-size: 2rem; 
+    color: base.$paleta-2;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  img {
+    max-width: 200px;
+    margin-bottom: 30px; 
+  }
+}
+
+.trip-creator__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 15px;
+
+
+  label {
+    font-size: 1.1rem;
+    color: base.$paleta-5;
+    font-weight: 500;
+    
+  color: white;
+  }
+
+  input {
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: base.$paleta-5;
+    background-color: base.$paleta-4; 
+    border: 1px solid #00ADB5;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &:focus {
+      border-color: base.$paleta-2;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+    }
+  }
+
+  .submit-btn {
+    padding: 12px 20px;
+    background-color: #00ADB5;
+    border: none;
+    color: base.$paleta-3;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: base.$paleta-2;
+    }
+  }
+}
