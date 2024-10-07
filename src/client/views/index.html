@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="../assets/logo-color.png"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <script
+      src="https://kit.fontawesome.com/85cd353cd8.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>WanderWeather</title>
+  </head>
+
+  <body>
+    <div class="loader hidden js-loader">
+      <div class="lds-dual-ring"></div>
+    </div>
+    <div class="container--main">
+      <nav>
+        <h1 class="heading--main">WanderWeather</h1>
+        <img src="../assets/logo-no-background.svg" alt="" />
+      </nav>
+      <div class="app">
+        <section class="trip-creator">
+          <form class="trip-creator__form js-form">
+            <label for="location">What city do you want to go to?: </label>
+            <input
+              placeholder="London, Paris, New York"
+              required
+              name="location"
+              minlength="2"
+              type="text"
+              id="location"
+            />
+            <label for="departure-date">What date will you depart?</label>
+            <input
+              name="departure-date"
+              required
+              type="date"
+              id="departure-date"
+            />
+            <button type="submit" class="button submit-btn">Create trip</button>
+          </form>
+        </section>
+
+        <section class="trips js-trips"></section>
+      </div>
+    </div>
+  </body>
+</html>
