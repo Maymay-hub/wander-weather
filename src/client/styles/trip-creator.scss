@@ -16,7 +16,7 @@
 
   .heading--main {
     font-size: 2rem; 
-    color: base.$paleta-2;
+    color: base.$secondary-color;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -37,7 +37,7 @@
 
   label {
     font-size: 1.1rem;
-    color: base.$paleta-5;
+    color: base.$text-color;
     font-weight: 500;
     
   color: white;
@@ -46,15 +46,15 @@
   input {
     padding: 12px 15px;
     font-size: 1rem;
-    color: base.$paleta-5;
-    background-color: base.$paleta-4; 
+    color: base.$text-color;
+    background-color: base.$background-color; 
     border: 1px solid #00ADB5;
     border-radius: 8px;
     transition: all 0.3s ease;
 
     &:hover,
     &:focus {
-      border-color: base.$paleta-2;
+      border-color: base.$secondary-color;
       outline: none;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
     }
@@ -64,7 +64,7 @@
     padding: 12px 20px;
     background-color: #00ADB5;
     border: none;
-    color: base.$paleta-3;
+    color: base.$accent-color;
     font-size: 1.1rem;
     font-weight: 600;
     border-radius: 8px;
@@ -72,7 +72,7 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: base.$paleta-2;
+      background-color: base.$secondary-color;
     }
   }
 }

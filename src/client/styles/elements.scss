@@ -3,25 +3,25 @@
 .button {
   border: none;
   font-size: 1em;
-  color: base.$paleta-3;
+  color: base.$accent-color;
   padding: 1em 3em;
   border-radius: 5px;
-  background-color: base.$paleta-2;
-  border: 1px solid base.$paleta-5;
+  background-color: base.$secondary-color;
+  border: 1px solid base.$text-color;
 
   &:hover,
   &:focus {
-    background-color: base.$paleta-2;
-    color: base.$paleta-1;
-    border: 1px solid base.$paleta-1;
+    background-color: base.$secondary-color;
+    color: base.$primary-color;
+    border: 1px solid base.$primary-color;
     cursor: pointer;
     transition: 0.5s;
   }
 }
 
 .button--secondary {
-  background-color: base.$paleta-3;
-  color: base.$paleta-5;
+  background-color: base.$accent-color;
+  color: base.$text-color;
   padding: 0.5em 1em;
   min-width: 120px;
 }
@@ -35,7 +35,7 @@
 }
 
 .link {
-  color: base.$paleta-1;
+  color: base.$primary-color;
 
   &:hover,
   &:focus {
