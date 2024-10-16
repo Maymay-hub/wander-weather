@@ -18,7 +18,7 @@ The app integrates data from three powerful APIs—Geonames for geographical inf
     - **Webpack Plugins**: Used to perform a wider range of tasks like minification and environment variable management.
 
  ### API Integration:
-  - **Geonames API**: For fetching geographical information and data.
+  - **OpenStreetMap API**: For fetching geographical information and data.
   - **Weatherbit API**: For retrieving real-time weather data for travel destinations.
   - **Pixabay API**: For sourcing high-quality images to enhance travel plans.
 
