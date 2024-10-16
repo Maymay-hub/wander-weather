@@ -68,15 +68,23 @@
     }
 
     // Weather Icon & Description
-    img {
-      width: 50px;
-      height: 50px;
-      align-self: flex-start;
-    }
+    .weather-container {
+      display: flex;
+      align-items: center;
+      gap: 10px; // Add space between icon and text
+      margin: 15px 0; // Space above and below weather info
 
-    .js-weather-display {
-      font-size: 16px;
-      color: #666; // Softer text for the weather information
+      img {
+        width: 70px; // Larger size for emphasis
+        height: 70px; // Maintain aspect ratio
+        align-self: center; // Center icon vertically
+      }
+
+      .js-weather-display {
+        font-size: 18px; // Increase font size for weather info
+        color: #666; // Softer text for the weather information
+        font-weight: 500; // Slightly bolder for better readability
+      }
     }
 
     // Remove Button

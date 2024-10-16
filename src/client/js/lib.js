@@ -94,7 +94,7 @@ function extractLocationName(data) {
   console.log("Address: ", address);
   
   // Priority order: city, town, village, municipality, county
-  const priorities = ['city', 'town', 'village', 'municipality', 'county'];
+  const priorities = ['city','municipality','county', 'state', 'country', 'town', 'village' ];
   
   for (let key of priorities) {
     if (address[key]) {
@@ -214,17 +214,19 @@ export async function createTripCard(tripData) {
   // Create the trip card HTML with trip details
   const tripHtml = `
 	<div class="trip-card">
-		<img class="js-destination-image" src="${tripData.destinationImageUrl}" alt="destination photo">
-		<div class="trip-details">
-			<h2 class="heading2">Upcoming trip to <span class="js-location-display">${tripData.destinationName}, ${tripData.country}</span></h2>
-			<p class="leave-date">Departure: <span class="js-dep-date-display">${tripData.startDate}</span></p>
-			<p class="departure-countdown js-departure-countdown">${tripData.daysUntilTrip} days left until your trip to ${tripData.destinationName}!</p>
-			<p class="subheading">Weather forecast for the time of your stay:</p>
-      <img src="https://www.weatherbit.io/static/img/icons/${tripData.weatherInfo.icon_code}.png" alt="${tripData.weatherInfo.description}" />
-			<p class="js-weather-display">${tripData.weatherInfo.description} and ${tripData.weatherInfo.temperature} degrees</p>
-			<button class="button button--secondary js-remove-button" value="${tripData.id}">Remove trip</button>
-		</div>
-	</div>
+    <img class="js-destination-image" src="${tripData.destinationImageUrl}" alt="destination photo">
+    <div class="trip-details">
+        <h2 class="heading2">Upcoming trip to <span class="js-location-display">${tripData.destinationName}, ${tripData.country}</span></h2>
+        <p class="leave-date">Departure: <span class="js-dep-date-display">${tripData.startDate}</span></p>
+        <p class="departure-countdown js-departure-countdown">${tripData.daysUntilTrip} days left until your trip to ${tripData.destinationName}!</p>
+        <p class="subheading">Weather forecast for the time of your stay:</p>
+        <div class="weather-container">
+            <img src="https://www.weatherbit.io/static/img/icons/${tripData.weatherInfo.icon_code}.png" alt="${tripData.weatherInfo.description}" />
+            <p class="js-weather-display">${tripData.weatherInfo.description} and ${tripData.weatherInfo.temperature} degrees</p>
+        </div>
+        <button class="button button--secondary js-remove-button" value="${tripData.id}">Remove trip</button>
+    </div>
+</div>
 	`;
 
   // Sanitize the HTML to prevent XSS attacks
