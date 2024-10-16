@@ -48,7 +48,6 @@ Ensure you have the following installed:
 
 Sign up for API keys from the following services:
 
-- **[GeoNames](http://www.geonames.org/)**: Create an account and request a username for accessing geographical data.
 - **[Weatherbit](https://www.weatherbit.io/)**: Sign up for an account to obtain an API key for weather data.
 - **[Pixabay](https://pixabay.com/api/docs/)**: Register for an API key to access high-quality images.
 
@@ -57,7 +56,6 @@ Sign up for API keys from the following services:
 Create a `.env` file in the root of your project and add your API keys as follows:
 
 ```plaintext
-GEONAMES_USER=********
 WEATHERBIT_API_KEY=*********************
 PIXABAY_API_KEY=********************
 ```
