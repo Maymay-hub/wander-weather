@@ -76,6 +76,13 @@ export function hideLoader() {
 // Create a trip card in the DOM with sanitized trip data
 export async function createTripCard(tripData) {
   const upcomingTripDisplay = document.querySelector(".js-trips");
+
+  // Check if there is an existing "No Trips" message and remove it
+  const noTripsMessage = document.querySelector(".no-trips-message");
+  if (noTripsMessage) {
+    upcomingTripDisplay.removeChild(noTripsMessage);
+  }
+
   console.log("Trip Data:", tripData);
   
   // Create the trip card HTML with trip details
@@ -100,7 +107,7 @@ export async function createTripCard(tripData) {
     .createRange()
     .createContextualFragment(sanitizedTripHtml);
 
-  upcomingTripDisplay.appendChild(htmlFragment); // Add the new trip card to the DOM
+  upcomingTripDisplay.appendChild(htmlFragment);
 }
 
 // Save the trips array to localStorage
@@ -112,8 +119,26 @@ export function mirrorToLocalStorage(items) {
 export function restoreFromLocalStorage(items) {
   console.info("Restoring from LS");
   const existingItems = JSON.parse(localStorage.getItem("items"));
-  if (existingItems.length) {
+  if (existingItems && existingItems.length) {
     items.push(...existingItems); // Add the stored trips to the trips array
     items.map((item) => createTripCard(item)); // Create trip cards for each restored trip
+  } else {
+    displayNoTripsMessage(); // Show the no trips message if no trips are present
   }
 }
+
+export function displayNoTripsMessage() {
+  const upcomingTripDisplay = document.querySelector(".js-trips");
+  
+  // Create the no trips message element
+  const noTripsMessage = document.createElement("div");
+  noTripsMessage.classList.add("no-trips-message");
+  noTripsMessage.innerHTML = `
+    <p>No trips added yet. Start planning your next adventure!</p>
+  `;
+
+  // Append the message to the trips display section
+  upcomingTripDisplay.appendChild(noTripsMessage);
+}
+
+// Function to initialize the map with OpenStreetMap and Leaflet

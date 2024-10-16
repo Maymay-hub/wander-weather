@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="../assets/logo-color.png"
-      rel="icon"
-      type="image/x-icon"
-    />
+    <link href="../assets/logo-color.png" rel="icon" type="image/x-icon" />
     <script
       src="https://kit.fontawesome.com/85cd353cd8.js"
       crossorigin="anonymous"
@@ -30,12 +26,10 @@
           <form class="trip-creator__form js-form">
             <label for="location">What city do you want to go to?: </label>
             <input
-              placeholder="London, Paris, New York"
-              required
-              name="location"
-              minlength="2"
               type="text"
-              id="location"
+              id="destination"
+              placeholder="Enter Destination"
+              required
             />
             <label for="departure-date">What date will you depart?</label>
             <input
@@ -50,6 +44,7 @@
 
         <section class="trips js-trips"></section>
       </div>
+
     </div>
   </body>
 </html>
