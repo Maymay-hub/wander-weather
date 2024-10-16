@@ -7,22 +7,37 @@ import {
   displayNoTripsMessage
 } from "./lib";
 import { form } from "./elements";
+import { areCoordinatesSet } from "./lib";
 
 // Handle form submission for creating a new trip
 export async function handleSubmit(event) {
-  event.preventDefault(); // Prevent default form submission behavior
-  const destinationName = form.querySelector("#destination").value.trim(); // Get the trip destination from input
-  const startDate = form.querySelector("#departure-date").value; // Get the trip start date from input
-  console.log(destinationName, startDate); // Log destination and start date for debugging
+  event.preventDefault();
+  const destinationName = form.querySelector("#destination").value.trim();
+  const startDate = form.querySelector("#departure-date").value;
+  const latitude = parseFloat(form.querySelector("#latitude").value);
+  const longitude = parseFloat(form.querySelector("#longitude").value);
   
-  // Create trip data and then render the trip card, handle errors if any
-  createTripData(destinationName, startDate)
-    .then((trip) => {
-      console.log("TRIIIIIP:", trip); // Log the created trip data
-      createTripCard(trip); // Create and display the trip card in the UI
-    })
-    .catch((error) => handleError(error)) // Handle errors from trip creation
-    .then(() => resetForm(form)); // Reset the form after trip creation
+  console.log("Form submission data:", { destinationName, startDate, latitude, longitude });
+  
+  if (!destinationName || !startDate) {
+    handleError(new Error("Please fill in all fields."));
+    return;
+  }
+  
+  if (!areCoordinatesSet()) {
+    handleError(new Error("Please select a location on the map."));
+    return;
+  }
+  
+  try {
+    const trip = await createTripData(destinationName, startDate, latitude, longitude);
+    console.log("Created trip:", trip);
+    createTripCard(trip);
+    resetForm(form);
+  } catch (error) {
+    console.error("Error creating trip:", error);
+    handleError(error);
+  }
 }
 
 // Remove a trip from the UI and update localStorage

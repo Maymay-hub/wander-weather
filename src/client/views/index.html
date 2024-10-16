@@ -10,6 +10,13 @@
       crossorigin="anonymous"
     ></script>
     <title>WanderWeather</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #map {
+        height: 400px; /* Adjust height as needed */
+        margin-top: 20px; /* Add some space above the map */
+      }
+    </style>
   </head>
 
   <body>
@@ -23,28 +30,26 @@
       </nav>
       <div class="app">
         <section class="trip-creator">
-          <form class="trip-creator__form js-form">
-            <label for="location">What city do you want to go to?: </label>
-            <input
-              type="text"
-              id="destination"
-              placeholder="Enter Destination"
-              required
-            />
-            <label for="departure-date">What date will you depart?</label>
-            <input
-              name="departure-date"
-              required
-              type="date"
-              id="departure-date"
-            />
-            <button type="submit" class="button submit-btn">Create trip</button>
+          <form id="trip-form" class="trip-creator__form js-form trip-creator">
+              <div id="map" style="height: 300px; width: 100%;"></div>
+              <input type="text" id="destination" name="destination" placeholder="Click on the map to select destination" readonly>
+              <input type="hidden" id="latitude" name="latitude">
+              <input type="hidden" id="longitude" name="longitude">
+              <input type="date" id="departure-date" name="departure-date" required>
+              <button type="submit" class="button button--primary">Add Trip</button>
+            
           </form>
+          <div id="map"></div>
+          <!-- Map container -->
+          <div id="destination-info"></div>
+          <!-- Destination info display -->
         </section>
 
         <section class="trips js-trips"></section>
       </div>
 
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+      
     </div>
   </body>
 </html>

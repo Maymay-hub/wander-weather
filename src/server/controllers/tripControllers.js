@@ -5,29 +5,30 @@ async function createTripData(req, res) {
   const location = req.body.location;
   const startDate = req.body.startDate;
   const daysUntilTrip = req.body.daysUntilTrip;
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
 
-  // Check if location and startDate are provided, otherwise return 400 error
-  if (!location || !startDate) {
+  // Check if all required fields are provided, otherwise return 400 error
+  if (!location || !startDate || !latitude || !longitude) {
     return res.status(400).send({ error: "Invalid input" });
   }
 
   console.log(
-    `user input is ${location} and ${startDate} and their trip is in ${daysUntilTrip} days`
+    `user input is ${location} at coordinates (${latitude}, ${longitude}) and ${startDate} and their trip is in ${daysUntilTrip} days`
   );
 
   // Environment variables for API credentials
-  const geoNamesUser = process.env.GEONAMES_USER;
   const weatherBitApiKey = process.env.WEATHERBIT_API_KEY;
   const pixabayApiKey = process.env.PIXABAY_API_KEY;
 
   try {
-    // Fetch geographic data from GeoNames API
-    const geoNamesData = await getDataFromGeoNames(geoNamesUser, location);
+    // Fetch country information using reverse geocoding
+    const countryInfo = await getCountryFromCoordinates(latitude, longitude);
 
-    // Fetch weather data based on geographic data
+    // Fetch weather data based on coordinates
     const weatherInfo = await getWeather(
-      geoNamesData.lat,
-      geoNamesData.lon,
+      latitude,
+      longitude,
       weatherBitApiKey,
       daysUntilTrip
     );
@@ -37,13 +38,13 @@ async function createTripData(req, res) {
     let destinationImageUrl = await getImage(
       pixabayApiKey,
       location,
-      geoNamesData.country
+      countryInfo.country
     );
 
     // Assign weather info, image URL, and country to trip data
     tripData.weatherInfo = weatherInfo;
     tripData.destinationImageUrl = destinationImageUrl;
-    tripData.country = geoNamesData.country;
+    tripData.country = countryInfo.country;
 
     // Send trip data as response
     res.send(tripData);
@@ -54,16 +55,13 @@ async function createTripData(req, res) {
   }
 }
 
-// Fetch latitude, longitude, and country from GeoNames API
-async function getDataFromGeoNames(username, city) {
-  const url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${username}`;
+// Fetch country information from coordinates using OpenStreetMap Nominatim API
+async function getCountryFromCoordinates(lat, lon) {
+  const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
   const res = await axios.get(url);
-  const geoNamesData = {
-    lat: res.data.geonames[0]?.lat,
-    lon: res.data.geonames[0]?.lng,
-    country: res.data.geonames[0]?.countryName,
+  return {
+    country: res.data.address.country,
   };
-  return geoNamesData;
 }
 
 // Fetch weather data from Weatherbit API using latitude, longitude, and day offset
